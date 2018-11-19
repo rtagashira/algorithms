@@ -22,7 +22,7 @@
 
 //   [output] array.integer
 
-function alternatingSums2(a) {
+function alternatingSums1(a) {
   let team1 = 0
   let team2 = 0
   for(let i=0;i<a.length;i++){
@@ -35,6 +35,10 @@ function alternatingSums2(a) {
   return [team1,team2]
 }
 
-let alternatingSums = a => a.reduce((p, v, i) => (p[i & 1] += v, p), [0, 0])
+let alternatingSums2 = a => a.reduce((p, v, i) => (p[i & 1] += v, p), [0, 0])
+
+function alternatingSums(a) {
+  return a.reduce((sum, next, i) => i % 2 === 0 ? [sum[0] + next, sum[1]] : [sum[0], sum[1] + next], [0, 0]);
+}
 
 console.log(alternatingSums([50, 60, 60, 45, 70]))//[180, 105]
