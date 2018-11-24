@@ -11,7 +11,7 @@
 
 // Ratiorg needs statues of sizes 4, 5 and 7.
 
-function makeArrayConsecutive2(arr) {
+function makeArrayConsecutive22(arr) {
   return arr.sort((a,b)=>a-b)
             .reduce((acc,cur,index,array)=>{
               if(index === 0){
@@ -22,6 +22,9 @@ function makeArrayConsecutive2(arr) {
                 return acc
               }
             }, 0)
+}
+function makeArrayConsecutive2(arr) {
+  return Math.max(...arr)-Math.min(...arr)-arr.length+1
 }
 
 console.log(makeArrayConsecutive2([6, 2, 3, 8])) //3
