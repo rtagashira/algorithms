@@ -22,12 +22,23 @@
 //   It's guaranteed that for the given test cases the answer always fits signed 32-bit integer type.
 
 
-function arrayChange(arr) {
+function arrayChange2(arr) {
   let moves = 0
   for(let i=1;i<arr.length;i++){
     if(arr[i]<=arr[i-1]){
       moves += arr[i-1]-arr[i] + 1
       arr[i] = arr[i-1] + 1
+    }
+  }
+  return moves
+}
+
+function arrayChange(arr) {
+  let moves = 0
+  for(let i=1;i<arr.length;i++){
+    while(arr[i]<=arr[i-1]){
+      moves++
+      arr[i]++
     }
   }
   return moves
