@@ -14,6 +14,8 @@
 function variableName(str) {
   return !str.match(/^\d|[\W]/g)
 }
+
+
 console.log(variableName("var_1__Int"))//true
 console.log(variableName("qq-q"))//false
 console.log(variableName("2w2"))//false
