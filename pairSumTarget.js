@@ -1,6 +1,6 @@
 // cs dojo
 // https://www.youtube.com/watch?v=GBuHSRDGZBY
-// find a number from each array that add up the closest to sum target t.
+// find a number from each array whose sum is the closest to sum target t.
 
 
 //finding all pairs
@@ -108,5 +108,33 @@ function sumTarget(arr1,arr2,t){
   }
   return arr
 }
+//--------------------------------------------------------------------------------------------------------
+// sorted arrays finding one pair
+function sumTarget(arr1,arr2,t){
+  arr1.sort((a,b)=>a-b)
+  arr2.sort((a,b)=>a-b)
+  let i = 0
+  let j = arr2.length - 1
+  let smallestDiff = Math.abs(arr1[0] + arr2[0] - t)
+  let closestPair = [arr1[0],arr2[0]]
 
-console.log(sumTarget([-1,3,8,2,9,5],[4,1,2,10,5,20], 24))//3,20 5,20
+  while(i<arr1.length && j >= 0){
+    let v1 = arr1[i]
+    let v2 = arr2[j]
+    let currentDiff = v1 + v2 - t
+    if(Math.abs(currentDiff) < smallestDiff){
+      smallestDiff = Math.abs(currentDiff)
+      closestPair = [v1,v2]
+    }
+    if(currentDiff === 0){
+      return closestPair
+    }else if(currentDiff < 0){
+      i +=1
+    }else{
+      j -= 1
+    }
+  }
+  return closestPair
+}
+
+console.log(sumTarget([-1,3,8,2,9,5],[4,1,2,10,5,20], 24))//3,20 or 5,20
