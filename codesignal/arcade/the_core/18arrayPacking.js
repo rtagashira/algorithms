@@ -10,7 +10,8 @@
 // For further clarification see the following example.
 
 function arrayPacking2(a) {
-  return parseInt(a.map(x=>'0'.repeat(8-x.toString(2).length)+ x.toString(2)).reverse().join(''),2)
+  return parseInt(a.map(x=>'0'.repeat(8-x.toString(2).length)+ x.toString(2))
+                   .reverse().join(''),2)
 }
 //-----------------------------------------------------------------------------------------------------
 function arrayPacking3(a) {
