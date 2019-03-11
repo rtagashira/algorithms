@@ -10,7 +10,7 @@
 function isSmooth(arr) {
   let even = arr.length%2 === 0
   if(arr[0]===arr[arr.length-1]){   //if first and last numbers are equal
-    if(even === true){          //even number of elements
+    if(even){          //even number of elements
       let middle = arr[(arr.length/2)-1] + arr[(arr.length/2)]
       if(arr[0] === middle){
         return true
