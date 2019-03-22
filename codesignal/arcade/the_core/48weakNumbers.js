@@ -55,5 +55,42 @@ function weakNumbers(n) {
 }
 
 
+//using an array
+function weakNumbers(n) {
+  let bigWeakness = 0
+  let freq = 0
+  let arr = []  // 2d array w/ format: [[number, divisors, weakness]]
+
+  for(let i=1;i<=n;i++){
+    let d = 0
+    for(let j=1;j<=i;j++){
+      if(i%j===0){
+        d++
+        arr[i] = [i,d]
+      }
+    }
+  }
+  
+  for(let i=1;i<=n;i++){
+    let w = 0
+    for(let j=1;j<=i;j++){
+      if(arr[j][1]>arr[i][1]){
+        w++
+      }
+      if(j === i){
+        arr[i].push(w)
+        if(w > bigWeakness){
+          bigWeakness = w
+          freq = 1
+        }else if(w === bigWeakness){
+          freq ++
+        }
+      }
+    }
+  }
+  return [bigWeakness,freq]
+}
+
+
 console.log(weakNumbers(9))//[2,2]
 console.log(weakNumbers(500))//[403,1]
