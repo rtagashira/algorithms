@@ -19,6 +19,20 @@ function sumFibs(num) {
     }
     return oddFib.reduce((prev,next)=>prev+next)
 }
+
+function sumFibs(num) {
+    let fib = [1,1]
+    let oddSum = 2
+    while(fib[fib.length-1] <= num){
+        let nextFib = fib[fib.length-1]+fib[fib.length-2]
+        fib.push(nextFib)
+        if(nextFib % 2 === 1 && nextFib <= num){
+            oddSum += nextFib
+        }
+    }
+    return oddSum
+}
+
 console.log(sumFibs(1))
 console.log(sumFibs(1000))
 console.log(sumFibs(4000000))
