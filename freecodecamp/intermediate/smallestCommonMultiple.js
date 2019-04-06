@@ -15,7 +15,7 @@ function smallestCommons(arr) {
             if(num % i != 0){
                 pass = false
             }
-            if(i === topNum && pass === true){
+            if(i === topNum && pass){
                 return num
             }
         }
@@ -24,6 +24,7 @@ function smallestCommons(arr) {
 }
 
 
+console.log(smallestCommons([1,3]))
 console.log(smallestCommons([1,5]))
 console.log(smallestCommons([5,1]))
 console.log(smallestCommons([2,10]))
