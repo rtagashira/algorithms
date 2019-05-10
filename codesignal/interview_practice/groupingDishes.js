@@ -5,16 +5,17 @@
 
 function groupingDishes(arr) {
   let obj = {}
-  
+  // create object with ingredient:[dishes] key:values
   for(let i=0;i<arr.length;i++){
     for(let j=1;j<arr[i].length;j++){
       obj[arr[i][j]]? obj[arr[i][j]].push(arr[i][0]): obj[arr[i][j]] = [arr[i][0]]
     }
   }
   
-  let ingredientsArr = Object.keys(obj)
   let finalArr = []
+  let ingredientsArr = Object.keys(obj)
   ingredientsArr.sort()
+  // create final array filtering out ingredients with 1 dish, and sorting dishes
   for(let i=0;i<ingredientsArr.length;i++){
     if(obj[ingredientsArr[i]].length > 1){
       obj[ingredientsArr[i]].sort()
