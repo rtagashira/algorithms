@@ -7,6 +7,12 @@
 // Finally, all the new strings are concatenated together in the same order and a new string is returned.
 
 function lineEncoding(str) {
+  return str.match(/(.)\1*/g)
+            .map(x=>x.length>1? x.length + x[0]: x[0])
+            .join('')
+}
+
+function lineEncoding(str) {
   let newStr = ''
   let char = str[0]
   let count = 0
