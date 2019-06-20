@@ -19,6 +19,19 @@ function swapDiagonals(matrix) {
   return matrix
 }
 
+//destructuring to avoid using temp variable
+function swapDiagonals(matrix) {
+  let row = 0
+  let col = 0
+
+  while(row <= matrix.length - 1){
+    [matrix[row][col],matrix[row][(matrix[row].length - 1) - col]] = [matrix[row][(matrix[row].length - 1) - col],matrix[row][col]]
+    col ++
+    row ++
+  }
+  return matrix
+}
+
 console.log(swapDiagonals([
   [1,2,3], 
   [4,5,6], 
