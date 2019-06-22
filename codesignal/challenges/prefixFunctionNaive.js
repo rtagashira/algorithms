@@ -1,6 +1,7 @@
 // Return the value of prefix function for a given string.
 
 // Given a string S of length n, prefix function produces an array P where for each i > 0, P[i] is the length of the longest substring ending with S[i] which is also a prefix of S, i.e. the maximal k such that S[j] = S[i - k + j + 1] for all 0 ≤ j < k. P[0] by definition equals to 0.
+// helpful video: https://www.youtube.com/watch?v=GTJr8OvyEVQ&feature=youtu.be
 
 function prefixFunctionNaive(s) {
   let arr = [0]
