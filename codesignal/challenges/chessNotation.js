@@ -56,8 +56,61 @@ function chessNotation(notation) {
   }
   return newBoard.map(x=>x.filter(a=>a!=' ').join('')).join('/')
 }
+//----------------------------------------------------------------------------------
+//refactored: reduced to 3 loops
+function chessNotation(notation) {
+  //replace numbers in the string with the char '!'
+  let strWithSpaces = ''
+  for(let letter of notation){
+    if(letter.match(/\d/)){
+      strWithSpaces += '!'.repeat(letter)
+    }else{
+      strWithSpaces += letter
+    }
+  }
+  
+  // create an array the same size as the string
+  // iterate through the string, putting it in the correct position in the array after the board is rotated 90 degrees
+  let rotateArr = [...'/'.repeat(strWithSpaces.length)]
+  let start = 7
+  let col = 7
+  for(let i in strWithSpaces){
+      rotateArr[start] = strWithSpaces[i]
+      if(strWithSpaces[i] === '/'){
+        continue
+      }else if(start < 62){
+        start += 9
+      }else{
+        col--
+        start = col
+      }
+  }
+
+  //rebuild the string, replacing the empty spaces with numbers
+  let finalStr = ''
+  let count = 0
+  for(let i=0;i<rotateArr.length;i++){
+    if(rotateArr[i] === '!'){
+      count++
+    }else{
+      if(count>0){
+        finalStr += count
+        count = 0
+      }
+      finalStr += rotateArr[i]
+    }
+    if(i === rotateArr.length - 1){
+      if(count > 0){
+        finalStr += count
+      }
+    }
+  }
+  return finalStr
+}
 
 console.log(chessNotation("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR"))
                                                                           //"RP4pr/NP4pn/BP4pb/QP4pq/K2P2pk/BP4pb/NP4pn/RP4pr"
 console.log(chessNotation("2kr3r/pp1nbppp/3p1n2/q1pPp1B1/4P1b1/2N2N2/PPP1BPPP/R2Q2RK"))
                                                                                       //"RP2q1p1/1P4p1/1PN1p2k/Q3Ppnr/1B1Pp1b1/1PN2np1/RP1bB1p1/KP4pr"
+console.log(chessNotation("bN2nrp1/n1nQn1n1/p1bPRPrb/n2Q1Nrb/Bn1nBRnB/Q1n1N1b1/qk1n1R2/Q1n2n1Q"))
+                                                                                                //"QqQBnpnb/1k1n3N/n1n2bn1/1n1nQPQ1/2NB1Rnn/nR1RNP1r/2bnrrnp/Q2Bbb2"
