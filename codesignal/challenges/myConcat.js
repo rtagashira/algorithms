@@ -5,7 +5,7 @@ function myConcat(strings, separator) {
 }
 
 function myConcat(strings, separator) {
-  return strings.map(x=>x+separator).join('')
+  return strings.reduce((acc,v)=>acc + v + separator,'')
 }
 
 function myConcat(strings, separator) {
