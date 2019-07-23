@@ -8,11 +8,10 @@
 
 function stringsCrossover(arr, result) {
   let matches = 0
+  let match = false
   const f = (str1,str2,i,str)=>{
     if(i === str1.length){
-      if(str === result){
-        matches ++
-      }
+      if(str === result) match = true
     }else{
       f(str1,str2,i+1,str + str1[i])
       f(str1,str2,i+1,str + str2[i])
@@ -24,7 +23,9 @@ function stringsCrossover(arr, result) {
       if(arr[i] === result || arr[j] === result){
         matches++
       }else{
+        match = false
         f(arr[i],arr[j],0,'')
+        if(match) matches++
       }
     }
   }
@@ -34,3 +35,4 @@ function stringsCrossover(arr, result) {
 console.log(stringsCrossover(["abc", "aaa", "aba", "bab"],"bbb"))//2
 console.log(stringsCrossover(["a", "b", "c", "d", "e"],"c"))//4
 console.log(stringsCrossover(["aaa", "aaa"],"aaa"))//1
+console.log(stringsCrossover(["aaa", "bba"],"aba"))//1
