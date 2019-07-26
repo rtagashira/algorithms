@@ -9,6 +9,7 @@
 function stringsCrossover(arr, result) {
   let matches = 0
   let match = false
+  //function recursively builds string from a pair of strings, any successes set boolean match to true
   const f = (str1,str2,i,str)=>{
     if(i === str1.length){
       if(str === result) match = true
@@ -17,7 +18,7 @@ function stringsCrossover(arr, result) {
       f(str1,str2,i+1,str + str2[i])
     }
   }
-
+  // iterate through the string pairs, avoiding dupes, applying the function
   for(let i=0;i<arr.length;i++){
     for(let j=i+1;j<arr.length;j++){
       if(arr[i] === result || arr[j] === result){
