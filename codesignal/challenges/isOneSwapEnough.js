@@ -14,6 +14,21 @@ function isOneSwapEnough(str) {
   }
   return false
 }
+// for in loops and less characters
+function isOneSwapEnough(s) {
+  const p = s => s === [...s].reverse().join('')
+  if(p(s)) return true
+  for(let i in s){
+    for(let j in s){
+      let a = [...s]
+      if(j>i){
+        [a[i],a[j]] = [a[j],a[i]]
+        if(p(a.join('')))return true
+      }
+    }
+  }
+  return false
+}
 
 console.log(isOneSwapEnough("aabaa"))//true
 console.log(isOneSwapEnough("abab"))//true
