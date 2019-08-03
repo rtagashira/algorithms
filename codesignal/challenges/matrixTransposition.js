@@ -14,6 +14,19 @@ function matrixTransposition(arr){
   return final
 }
 
+function matrixTransposition(arr){
+  let final = [...'x'.repeat(arr[0].length)]
+  for(let row in final){
+    final[row] = [...'x'.repeat(arr.length)]
+  }
+  for(let i in arr){
+    for(let j in arr[0]){
+      final[j][i] = arr[i][j]
+    }
+  }
+  return final
+}
+
 console.log(matrixTransposition([[1, 1, 3], 
                                  [2, 1, 1]]))
   //[[1, 2],
