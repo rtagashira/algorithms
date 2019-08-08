@@ -1,25 +1,36 @@
 // You are climbing a staircase that has n steps. You can take the steps either 1 or 2 at a time. Calculate how many distinct ways you can climb to the top of the staircase.
 
-
+function climbingStairs(n) {
+  let obj = {
+    1:1,
+    2:2
+  }
+  let max = Math.max(...Object.keys(obj))
+  while(max<n){
+    max++
+    obj[max] = obj[max-1] + obj[max-2]
+  }
+  return obj[n]
+}
 
 
 //too slow
-function climbingStairs(n) {
-  let obj = {}
-  function helper(n,s=''){
-    let sum = s? +[...s].reduce((acc,v)=>+acc + +v): 0
-    if(s && sum >= n){
-      if(sum === n){
-        obj[s] = 1
-      }
-    }else{
-      helper(n, s + '1')
-      helper(n, s + '2')
-    }
-  }
-  helper(n)
-  return Object.keys(obj).length
-}
+// function climbingStairs(n) {
+//   let obj = {}
+//   function helper(n,s=''){
+//     let sum = s? +[...s].reduce((acc,v)=>+acc + +v): 0
+//     if(s && sum >= n){
+//       if(sum === n){
+//         obj[s] = 1
+//       }
+//     }else{
+//       helper(n, s + '1')
+//       helper(n, s + '2')
+//     }
+//   }
+//   helper(n)
+//   return Object.keys(obj).length
+// }
 
 console.log(climbingStairs(1))//1
 console.log(climbingStairs(2))//2
