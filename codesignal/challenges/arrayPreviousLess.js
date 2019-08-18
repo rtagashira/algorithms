@@ -3,6 +3,15 @@
 function arrayPreviousLess(a) {
   let newA = []
   for(let i=0;i<a.length;i++){
+    let num = a.slice(0,i).reverse().find(x=>x<a[i])
+    num === undefined? newA.push(-1): newA.push(num)
+  }
+  return newA
+}
+
+function arrayPreviousLess(a) {
+  let newA = []
+  for(let i=0;i<a.length;i++){
     let num
     for(let j=0;j<i;j++){
       if(a[j]<a[i]) num = a[j]
