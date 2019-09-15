@@ -4,7 +4,7 @@
 
 let imageTruncation = (arr, threshold) => {
   for(let i in arr){
-      arr[i] = arr[i].map(x=>x>=threshold?threshold:x)
+    arr[i] = arr[i].map(x=>x>=threshold?threshold:x)
   }
   return arr
 }
