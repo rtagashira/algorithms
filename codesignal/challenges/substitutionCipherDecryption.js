@@ -22,7 +22,7 @@ let substitutionCipherDecryption = (str, sig, eSig) => {
     cipher[alphaI] = eSig[i]
   }
   //remove esig letters from alphabet
-  alphaArrFilter = alphaArr.filter(x=>eSig.indexOf(x)===-1)
+  let alphaArrFilter = alphaArr.filter(x=>eSig.indexOf(x)===-1)
   //fill in blanks in the cipher with alphabet letters
   for(let i=0;i<cipher.length;i++){
     if(!cipher[i]){
