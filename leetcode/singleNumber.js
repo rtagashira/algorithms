@@ -13,6 +13,13 @@ const singleNumber = (nums) =>{
 }
 
 // const singleNumber = (nums) =>{
+//     for(let i=1;i<nums.length;i++){
+//         nums[i] = nums[i] ^ nums[i-1]
+//     }
+//     return nums.pop()
+// }
+
+// const singleNumber = (nums) =>{
 //     let set = new Set()
 //     for(let i=0;i<nums.length;i++){
 //         if(set.has(nums[i])){
