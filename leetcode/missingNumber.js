@@ -3,10 +3,8 @@
 const missingNumber = (nums) =>{
     const set = new Set(nums)
     for(let i=0;i<=nums.length;i++){
-        if(set.has(i))set.delete(i)
+        if(!set.has(i)) return i
     }
-    return set
-    return [...set][0]
 }
 
 console.log(missingNumber([3,0,1]))//2
