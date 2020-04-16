@@ -52,4 +52,4 @@ const findWords = (words) =>{
 }
 
 console.log(findWords(["Hello", "Alaska", "Dad", "Peace"]))//["Alaska", "Dad"]
-console.log(findWords(["a","b"]))//["Alaska", "Dad"]
+console.log(findWords(["a","b"]))//["a", "b"]
