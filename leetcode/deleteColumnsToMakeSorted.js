@@ -9,15 +9,14 @@
 // Return the minimum possible value of D.length.
 
 const minDeletionSize = (a) =>{
-    let obj = {}
     let count = 0
     for(let i=0;i<a[0].length;i++){
-        for(let j=0;j<a.length;j++){
-            obj[i]? obj[i].push(a[j][i]) : obj[i] = [a[j][i]]
+        for(let j=1;j<a.length;j++){
+            if(a[j][i] < a[j-1][i]){
+                count++
+                break
+            }
         }
-    }
-    for(let key in obj){
-        if(obj[key].join() != obj[key].sort().join()) count++
     }
     return count
 }
