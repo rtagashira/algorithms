@@ -14,7 +14,7 @@ const reorderSpaces = (str) =>{
     }
     
     str = arr.join(' '.repeat(Math.floor(count/spaces)))
-    return arr.length === 1? str + ' '.repeat(count): str + ' '.repeat(Math.ceil(count % spaces))
+    return arr.length === 1? str + ' '.repeat(count): str + ' '.repeat(count % spaces)
 }
 
 console.log(reorderSpaces("  this   is  a sentence "))//"this   is   a   sentence"
