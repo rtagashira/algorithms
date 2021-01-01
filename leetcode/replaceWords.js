@@ -9,7 +9,7 @@ const replaceWords = (d, str)=>{
     let arr = str.split(' ')
     
     for(let i=0;i<arr.length;i++){
-        for(r of d){
+        for(let r of d){
             if(arr[i].indexOf(r) === 0){
                 arr[i] = r
                 break
