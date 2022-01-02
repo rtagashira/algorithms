@@ -14,19 +14,40 @@ const setZeroes = (matrix) =>{
             }
         }
     }
-    
-    for(let n of setR){
+
+    for(let i=0;i<matrix.length;i++){
         for(let j=0;j<matrix[0].length;j++){
-            matrix[n][j] = 0
-        }
-    }
-    for(let n of setC){
-        for(let i=0;i<matrix.length;i++){
-            matrix[i][n] = 0
+            if(setR.has(i) || setC.has(j)) matrix[i][j] = 0
         }
     }
     return matrix
 }
+
+// const setZeroes = (matrix) =>{
+//     let setR = new Set()
+//     let setC = new Set()
+    
+//     for(let i=0;i<matrix.length;i++){
+//         for(let j=0;j<matrix[0].length;j++){
+//             if(matrix[i][j] === 0){
+//                 setR.add(i)
+//                 setC.add(j)
+//             }
+//         }
+//     }
+    
+//     for(let n of setR){
+//         for(let j=0;j<matrix[0].length;j++){
+//             matrix[n][j] = 0
+//         }
+//     }
+//     for(let n of setC){
+//         for(let i=0;i<matrix.length;i++){
+//             matrix[i][n] = 0
+//         }
+//     }
+//     return matrix
+// }
 
 console.log(setZeroes([[1,1,1],[1,0,1],[1,1,1]]))
                                                      //[[1,0,1],[0,0,0],[1,0,1]]
