@@ -11,10 +11,21 @@ const searchMatrix = (matrix, target) =>{
             i++
             continue
         }
-            for(let j=0;j<matrix[i].length;j++){
-                if(matrix[i][j] === target) return true
+        let l = 0
+        let r = matrix[i].length - 1
+        let m = Math.floor(r/2)
+        while(l <= r){
+            if(matrix[i][m] === target){
+                return true
+            }else if(target < matrix[i][m]){
+                r = m
+                m = Math.floor((r+l)/2)
+            }else if(target > matrix[i][m]){
+                l = m
+                m = Math.ceil((r+m)/2)
             }
-        i++
+            if(l === r - 1 && matrix[i][l] !== target && matrix[i][r] !== target) return false
+        }
     }
     return false
 }
@@ -27,23 +38,13 @@ const searchMatrix = (matrix, target) =>{
 //             i++
 //             continue
 //         }
-//             let l = 0
-//             let r = matrix[i].length -1
-//             let m = Math.floor(r/2)
-//             while(l !== r){
-//                 if(matrix[m] === target){
-//                     return true
-//                 }else if(target < matrix[m]){
-//                     r = m
-//                     m = Math.floor((m+l)/2)
-//                 }else if(target > matrix[m]){
-//                     l = m
-//                     m = Math.ceil((r+m)/2)
-//                 }
-//                 // if( === r) return false
+//             for(let j=0;j<matrix[i].length;j++){
+//                 if(matrix[i][j] === target) return true
 //             }
-//         return false
-//         // i++
+//         i++
 //     }
 //     return false
 // }
+
+console.log(searchMatrix(matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3))//true
+console.log(searchMatrix(matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13))//false
